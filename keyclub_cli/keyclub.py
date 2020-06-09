@@ -11,6 +11,11 @@ conn = sqlite3.connect('keyclub.sqlite')
 cur = conn.cursor()
 
 if args.view:
+    name = args.view
+    name = name.replace('(', '')
+    name = name.replace(')', '')
+    name = name.replace(';', '')
+    name = name.replace("'", '')
     for row in cur.execute(f"SELECT * FROM {args.view}"):
         print(row)
 else:
